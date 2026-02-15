@@ -15,12 +15,12 @@ import { useFocusEffect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { Audio } from 'expo-av';
 import { Video, ResizeMode } from 'expo-av';
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+import { BACKEND_URL } from '../../utils/api';
 
 export default function ReportList() {
   const router = useRouter();

@@ -12,13 +12,13 @@ import * as Location from 'expo-location';
 import { File } from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import Slider from '@react-native-community/slider';
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 import { addToQueue } from '../../utils/offlineQueue';
 import NetInfo from '@react-native-community/netinfo';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
+import { BACKEND_URL } from '../../utils/api';
 const MIN_RECORDING_DURATION = 2;
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 

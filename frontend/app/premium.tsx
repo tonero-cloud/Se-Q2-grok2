@@ -5,10 +5,10 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { getAuthToken, saveAuthData, getUserMetadata, clearAuthData } from '../utils/auth';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+import { BACKEND_URL } from '../../utils/api';
 
 export default function Premium() {
   const router = useRouter();

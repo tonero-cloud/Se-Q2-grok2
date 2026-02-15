@@ -4,12 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
+import { BACKEND_URL } from '../../utils/api';
 
 type DataType = 'all' | 'panics' | 'reports' | 'users';
 type SearchField = 'all' | 'name' | 'email' | 'phone' | 'date';

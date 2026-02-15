@@ -6,12 +6,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import * as Location from 'expo-location';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 import { addToQueue } from '../../utils/offlineQueue';
 import NetInfo from '@react-native-community/netinfo';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+import { BACKEND_URL } from '../../utils/api';
 
 export default function AudioReport() {
   const router = useRouter();

@@ -15,10 +15,10 @@ import * as Location from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+import { BACKEND_URL } from '../../utils/api';
 const LOCATION_TASK_NAME = 'background-location-task';
 
 // Define the background location task - Uses AsyncStorage directly (can't use SecureStore in background)

@@ -7,11 +7,11 @@ import { useRouter, useFocusEffect } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { getPendingCount, processQueue } from '../../utils/offlineQueue';
 import { getAuthToken, clearAuthData, getUserMetadata } from '../../utils/auth';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
+import { BACKEND_URL } from '../../utils/api';
 
 export default function CivilHome() {
   const router = useRouter();

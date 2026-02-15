@@ -5,11 +5,11 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 import axios from 'axios';
-import Constants from 'expo-constants';
+
 import { getAuthToken, clearAuthData } from '../../utils/auth';
 import { NativeMap } from '../../components/NativeMap';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+import { BACKEND_URL } from '../../utils/api';
 const { width } = Dimensions.get('window');
 
 export default function SecurityNearby() {
