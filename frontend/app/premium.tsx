@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import { getAuthToken, saveAuthData, getUserMetadata, clearAuthData } from '../utils/auth';
 
-import { BACKEND_URL } from '../../utils/api';
+import { BACKEND_URL } from '../utils/api';
 
 export default function Premium() {
   const router = useRouter();
