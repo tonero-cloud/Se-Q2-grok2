@@ -11,7 +11,7 @@ import axios from 'axios';
 import { getPendingCount, processQueue } from '../utils/offlineQueue';
 import { getAuthToken, clearAuthData, getUserMetadata } from '../utils/auth';
 
-import { BACKEND_URL } from '../../utils/api';
+import { BACKEND_URL } from '../utils/api';
 
 export default function CivilHome() {
   const router = useRouter();
