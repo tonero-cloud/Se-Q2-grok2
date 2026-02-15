@@ -1,9 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Alert, View } from 'react-native';
+import { Alert, View, ActivityIndicator, Text, StyleSheet } from 'react-native';
 import * as Notifications from 'expo-notifications';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 import { startQueueProcessor } from '../utils/offlineQueue';
+
+// Keep the splash screen visible while loading fonts
+SplashScreen.preventAutoHideAsync().catch(() => {});
 
 // Configure notification handler ONCE at module level
 Notifications.setNotificationHandler({
@@ -109,11 +115,61 @@ function AppContent() {
 }
 
 export default function RootLayout() {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Pre-load fonts for icons - this ensures Ionicons work on web
+        await Font.loadAsync({
+          ...Ionicons.font,
+        });
+      } catch (e) {
+        console.warn('Font loading error:', e);
+      } finally {
+        // Tell the application to render
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      // Hide splash screen once fonts are loaded
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#EF4444" />
+        <Text style={styles.loadingText}>Loading SafeGuard...</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaProvider>
-      <View style={{ flex: 1, backgroundColor: '#0F172A' }}>
+      <View style={{ flex: 1, backgroundColor: '#0F172A' }} onLayout={onLayoutRootView}>
         <AppContent />
       </View>
     </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: '#0F172A',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loadingText: {
+    color: '#94A3B8',
+    fontSize: 16,
+    marginTop: 16,
+  },
+});
