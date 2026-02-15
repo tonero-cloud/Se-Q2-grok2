@@ -12,21 +12,32 @@ export default function Root({ children }: PropsWithChildren) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        {/*
-          Disable body scrolling on web to make ScrollView components work correctly.
-          If you want to enable scrolling, remove `ScrollViewStyleReset` and
-          set `overflow: auto` on the body style below.
-        */}
-        <ScrollViewStyleReset />
+        {/* Load Ionicons font for web */}
+        <link
+          href="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+          rel="modulepreload"
+        />
         <style
           dangerouslySetInnerHTML={{
             __html: `
+              @font-face {
+                font-family: 'Ionicons';
+                src: url('https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+              }
               body > div:first-child { position: fixed !important; top: 0; left: 0; right: 0; bottom: 0; }
               [role="tablist"] [role="tab"] * { overflow: visible !important; }
               [role="heading"], [role="heading"] * { overflow: visible !important; }
             `,
           }}
         />
+        {/*
+          Disable body scrolling on web to make ScrollView components work correctly.
+          If you want to enable scrolling, remove `ScrollViewStyleReset` and
+          set `overflow: auto` on the body style below.
+        */}
+        <ScrollViewStyleReset />
       </head>
       <body
         style={{
