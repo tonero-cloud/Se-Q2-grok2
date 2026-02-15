@@ -6,18 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import { saveAuthData, clearAuthData } from '../../utils/auth';
 import { setupPushNotifications } from '../../utils/notifications';
-
-// Use relative URL for web, or the environment variable for native
-const getBackendUrl = () => {
-  if (Platform.OS === 'web') {
-    // On web, use relative URL since backend is on same domain
-    return '';
-  }
-  // For native, use the environment variable or default
-  return process.env.EXPO_PUBLIC_BACKEND_URL || '';
-};
-
-const BACKEND_URL = getBackendUrl();
+import { BACKEND_URL } from '../../utils/api';
 
 export default function Login() {
   const router = useRouter();
