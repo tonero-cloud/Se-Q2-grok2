@@ -6,10 +6,17 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
-import Constants from 'expo-constants';
 import { setupPushNotifications } from '../../utils/notifications';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+// Use relative URL for web, or the environment variable for native
+const getBackendUrl = () => {
+  if (Platform.OS === 'web') {
+    return '';
+  }
+  return process.env.EXPO_PUBLIC_BACKEND_URL || '';
+};
+
+const BACKEND_URL = getBackendUrl();
 
 export default function Register() {
   const router = useRouter();
