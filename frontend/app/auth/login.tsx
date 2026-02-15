@@ -4,11 +4,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
-import Constants from 'expo-constants';
 import { saveAuthData, clearAuthData } from '../../utils/auth';
 import { setupPushNotifications } from '../../utils/notifications';
 
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL || 'https://ongoing-dev-22.preview.emergentagent.com';
+// Use relative URL for web, or the environment variable for native
+const getBackendUrl = () => {
+  if (Platform.OS === 'web') {
+    // On web, use relative URL since backend is on same domain
+    return '';
+  }
+  // For native, use the environment variable or default
+  return process.env.EXPO_PUBLIC_BACKEND_URL || '';
+};
+
+const BACKEND_URL = getBackendUrl();
 
 export default function Login() {
   const router = useRouter();
