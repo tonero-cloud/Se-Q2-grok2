@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import { getAuthToken, clearAuthData } from '../../../utils/auth';
 
-import { BACKEND_URL } from '../../utils/api';
+import { BACKEND_URL } from '../../../utils/api';
 
 export default function SecurityChat() {
   const router = useRouter();
