@@ -10,7 +10,7 @@ import axios from 'axios';
 
 import { getAuthToken, getUserMetadata, clearAuthData } from '../utils/auth';
 
-import { BACKEND_URL } from '../../utils/api';
+import { BACKEND_URL } from '../utils/api';
 
 export default function Escort() {
   const router = useRouter();
