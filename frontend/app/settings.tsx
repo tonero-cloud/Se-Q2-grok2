@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import { getAuthToken, clearAuthData, getUserMetadata } from '../utils/auth';
 
-import { BACKEND_URL } from '../../utils/api';
+import { BACKEND_URL } from '../utils/api';
 
 const ICON_OPTIONS = ['shield', 'shield-checkmark', 'lock-closed', 'lock-open', 'key', 'finger-print', 'eye', 'eye-off', 'pulse', 'heart', 'flash', 'star', 'moon', 'sunny', 'cloudy', 'rainy', 'snow', 'thunderstorm', 'partly-sunny', 'water', 'flame', 'leaf', 'flower', 'paw', 'bug', 'airplane', 'car', 'bicycle', 'boat', 'bus', 'rocket', 'train', 'walk', 'fitness', 'basketball', 'football', 'baseball', 'golf', 'tennisball', 'trophy', 'medal', 'ribbon', 'rose', 'earth', 'globe', 'map', 'location', 'navigate', 'compass', 'pin', 'home', 'business', 'school', 'library', 'briefcase', 'calendar', 'time', 'alarm', 'stopwatch', 'timer', 'notifications', 'chatbubble', 'mail', 'call', 'videocam', 'camera', 'mic', 'musical-notes', 'volume-high', 'headset', 'cart', 'bag', 'pricetag', 'card', 'cash', 'gift', 'balloon', 'cafe', 'pizza', 'beer', 'wine', 'ice-cream', 'nutrition', 'restaurant', 'fast-food', 'book', 'newspaper', 'bookmark', 'document', 'folder', 'calculator', 'clipboard', 'create', 'pencil', 'brush', 'color-palette', 'image', 'images', 'aperture', 'barcode'];
 
