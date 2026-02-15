@@ -14,8 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import Constants from 'expo-constants';
 import Slider from '@react-native-community/slider';
-import { getAuthToken, clearAuthData } from '../utils/auth';
-import { addToQueue } from '../utils/offlineQueue';
+import { getAuthToken, clearAuthData } from '../../utils/auth';
+import { addToQueue } from '../../utils/offlineQueue';
 import NetInfo from '@react-native-community/netinfo';
 
 const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || process.env.EXPO_PUBLIC_BACKEND_URL;
